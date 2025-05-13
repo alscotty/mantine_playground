@@ -1,14 +1,21 @@
 import './App.css';
-import { RegistrationForm } from './components/RegistrationForm';
+import { HomePage } from './components/HomePage';
 import { MantineProvider } from '@mantine/core';
+import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
+import { RegistrationForm } from './components/RegistrationForm';
 
 function App() {
   return (
-    <MantineProvider>
-      <div className="App">
-        <RegistrationForm />
-      </div>
-    </MantineProvider>
+    <Router>
+      <MantineProvider>
+        <div className="App">
+          <Routes>
+            <Route path="/" element={<HomePage />} />
+            <Route path="/registration" element={<RegistrationForm />} />
+          </Routes>
+        </div>
+      </MantineProvider>
+    </Router>
   );
 }
 

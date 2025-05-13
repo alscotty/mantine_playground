@@ -1,5 +1,6 @@
 import { useForm } from '@mantine/form';
 import { Button, TextInput } from '@mantine/core';
+import { useNavigate } from 'react-router-dom';
 
 export const RegistrationForm = () => {
     const form = useForm({
@@ -17,6 +18,8 @@ export const RegistrationForm = () => {
             confirmPassword: (confirmPasswordInput, values) => confirmPasswordInput === values.password ? null : 'Passwords do not match'
         }
     })
+
+    const navigate = useNavigate();
 
     const handleSubmit = form.onSubmit((values) => {
         console.log('Form values:', values);
@@ -43,6 +46,7 @@ export const RegistrationForm = () => {
                 />
                 <Button type='submit'>Sign Up</Button>
             </form>
+            <Button onClick={() => navigate('/')}>Back to Home</Button>
         </div>
     )
 }
